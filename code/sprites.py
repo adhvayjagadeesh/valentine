@@ -14,8 +14,6 @@ class Paddle(pygame.sprite.Sprite):
     def __init__(self, groups):
         super().__init__(groups)
 
-        # --- Try to load lp_image.png from project/data, rotate 90° right (clockwise),
-        # and fit it into SIZE['paddle'] while preserving aspect ratio. ---
         assets_dir = Path(__file__).resolve().parent.parent / 'data'
         png_path = assets_dir / 'lp_image.png'
 
@@ -82,7 +80,6 @@ class Paddle(pygame.sprite.Sprite):
         # Use final_surf as the visible paddle image
         self.image = final_surf
 
-        # --- Create a tinted shadow surface that preserves alpha ---
         try:
             self.shadow_surf = self.image.copy()
             tint = pygame.Surface(self.image.get_size(), pygame.SRCALPHA)
@@ -274,3 +271,4 @@ class Ball(pygame.sprite.Sprite):
         self.timer()
         self.move(dt)
         self.wall_collision()
+
