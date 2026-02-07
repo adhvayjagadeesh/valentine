@@ -11,9 +11,6 @@ from groups import AllSprites
 # import POS so we can re-center paddles on resets
 from settings import WINDOW_WIDTH, WINDOW_HEIGHT, COLORS, SPEED, POS
 
-# --------------------------------
-# Small drawing helper: heart
-# --------------------------------
 def draw_heart(surface, center, size, color):
     """
     Draw a stylized heart (two circles + polygon) at center (x,y).
@@ -33,9 +30,6 @@ def draw_heart(surface, center, size, color):
     pygame.draw.polygon(surface, color, points)
 
 
-# --------------------------------
-# Main Game + Menus
-# --------------------------------
 class Game:
     def __init__(self):
         pygame.init()
@@ -154,9 +148,7 @@ class Game:
         pygame.draw.line(self.display_surface, pygame.Color(COLORS.get('bg detail', '#ffffff')),
                          (center_x, 0), (center_x, WINDOW_HEIGHT), 2)
 
-    # -----------------------
-    # Start / Valentine Menu
-    # -----------------------
+
     def start_menu(self):
         """
         Pink Valentine start menu with hearts and a Play button.
@@ -228,9 +220,6 @@ class Game:
 
             pygame.display.update()
 
-    # -----------------------
-    # Login Screen
-    # -----------------------
     def login_menu(self):
         """
         Username/password login. Hints shown INSIDE the white textboxes.
@@ -393,9 +382,6 @@ class Game:
 
         return False
 
-    # -----------------------
-    # Challenge Window (third popup)
-    # -----------------------
     def challenge_menu(self):
         """
         Third popup with the exact text requested and a Continue button.
@@ -496,9 +482,7 @@ class Game:
                 except Exception:
                     pass
 
-    # -----------------------
-    # Retry modal (new)
-    # -----------------------
+
     def draw_retry_modal(self):
         """
         Draws the centered modal asking "Would you like to retry?" with Yes/No buttons.
@@ -551,9 +535,7 @@ class Game:
 
         return yes_rect, no_rect
 
-    # -----------------------
-    # Final popup: Valentine's ask
-    # -----------------------
+
     def final_menu(self):
         """
         Final romantic popup when the target score is reached.
@@ -623,9 +605,6 @@ class Game:
         pygame.quit()
         sys.exit()
 
-    # -----------------------
-    # Main run loop
-    # -----------------------
     def run(self):
         # 1) start menu
         self.start_menu()
@@ -725,4 +704,5 @@ class Game:
 
 
 if __name__ == "__main__":
+
     Game().run()
